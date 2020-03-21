@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/udacity/RoboND-simple_arm/
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "first_interaction"]
+	remote = origin
+	merge = refs/heads/first_interaction

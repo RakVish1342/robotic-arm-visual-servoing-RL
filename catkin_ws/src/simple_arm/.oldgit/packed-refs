@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled 
+24eaeadfa8f964fa7cc692237921d1183a6e6afa refs/remotes/origin/arm_mover
+61c8555f81bb5f46f99fae2f63e13142ef74511a refs/remotes/origin/first_interaction
+1f91726b1508eba5405beaed13ae1f1cb1991af2 refs/remotes/origin/master
+73492ef7d3787cb0e216c7a5e12bf241680cdb00 refs/remotes/origin/simple_mover

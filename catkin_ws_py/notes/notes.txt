@@ -1,0 +1,6 @@
+Troubleshooting look_away
+In some cases look_away is executing when running it manually but is not executing automatically with roslaunch. This is typically a timing issue. If look_away starts before the system has fully initialized, then look_away hangs in the call to safe_move. Student jsteinbae offered a great solution to this issue:
+
+My workaround was to add wait_for_message to the look_away node before subscribing to the topics. This ensures that the callbacks are not called before the gazebo simulation (publishing these topics) is fully initialized.
+
+The same happens here even with the wait_service OR wait_message function. Look away starts working if killed via "rosnode kill /look_away" and then restarted  with "rosrun simple_arm look_away"
