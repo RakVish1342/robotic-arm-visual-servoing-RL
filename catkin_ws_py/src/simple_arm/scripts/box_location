@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+
+import cv2
+import math
+import rospy
+from std_msgs.msg import Float64
+from cv_bridge import CvBridge
+from sensor_msgs.msg import Image, JointState
+from simple_arm.srv import *
+import numpy as np
+
+
+class BoxLocation(object):
+    def __init__(self):
+        rospy.init_node('box_location')
+
+        self.subCamera = rospy.Subscriber("/rgb_camera/image_raw", 
+                                     Image, self.cbCamera)
+        self.pubBoxLoc = rospy.Publisher('/simple_arm/box_location',
+                             Float64, queue_size=10)
+        self.cvb = CvBridge()
+
+        rospy.spin()
+
+    def cbCamera(self, msg):
+        try:
+            rospy.loginfo("#####Box Location#################################################################")
+            self.image = self.cvb.imgmsg_to_cv2(msg)
+            r = self.image[:,:,0]
+            g = self.image[:,:,1]
+            b = self.image[:,:,2]
+            #print(r)
+            #print(g)
+            #print(b)
+            i = 0
+            for col in [r, g, b]:
+                print("---------------")
+                print (i)
+                sh = np.shape(col)
+                ms = sh[0]
+                ns = sh[1]
+                print(sh)
+                for m in range(ms):
+                   for n in range(ns):
+                       if (col[m,n] > 210):
+                           print("TRUE")
+                i = i +1
+
+            
+            #cv2.imshow('Image Window', self.image)
+            '''
+            img = data.data()
+            m = data.height()
+            n = data.width()
+            print("========================")
+            print(m)
+            print(n)
+            print(data)
+            '''
+
+        except rospy.ServiceException, e:
+            rospy.logwarn("Box Location service failed: %s", e)
+
+
+if __name__ == '__main__':
+    try: 
+        BoxLocation()
+    except rospy.ROSInterruptException:
+        pass

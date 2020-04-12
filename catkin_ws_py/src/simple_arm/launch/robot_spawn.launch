@@ -24,9 +24,6 @@
     <arg name="debug" value="false"/>
   </include>
 
-
-
-
   <!--spawn a robot in gazebo world-->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
   args="-urdf -param robot_description -x 0 -y 0 -z 0 -R 0 -P 0 -Y 0 -model simple_arm"/>
@@ -43,5 +40,8 @@
 
   <!-- The look away node -->
     <node name="look_away" type="look_away" pkg="simple_arm"/>
+
+  <!-- The box location node -->
+    <node name="box_location" type="box_location" pkg="simple_arm" output="screen"/>
 
 </launch>
