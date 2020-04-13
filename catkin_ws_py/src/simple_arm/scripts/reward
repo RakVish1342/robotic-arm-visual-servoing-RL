@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+
+import cv2
+from geometry_msgs.msg import Pose # Same as Twist, Pose, Odom, Imu: https://answers.ros.org/question/216482/are-odom-pose-twist-and-imu-processed-differently-in-robot_localization/
+import math
+import rospy
+from std_msgs.msg import Float64
+from simple_arm.srv import *
+
+
+class Reward(object):
+    def __init__(self):
+        rospy.init_node('box_location')
+
+        self.subBoxLoc = rospy.Subscriber("/simple_arm/box_location", Pose, self.cbReward)
+        self.pubReward = rospy.Publisher('/simple_arm/reward', Float64, queue_size=10)
+        self.imgSize = (480, 640)
+        self.center = (480/2, 640/2)
+        self.goalThresh = (15, 15)
+
+        rospy.spin()
+
+    def distance(pt1, pt2):
+        dist = ( (pt1[0] - pt[0])**2 + (pt1[1] - pt[1])**2 )**(0.5)
+        return dist
+
+    def cbReward(self, msg):
+        try:
+            rospy.loginfo(">>> Reward")
+            boxLoc = (msg.position.x, msg.position.y)
+            reward = - self.distance(boxLoc, self.center)
+            msgOut = reward
+
+            # Add some boundary within which reward in +ve AKA goal state is reached
+
+            self.pubReward.publish(msgOut)
+
+        except rospy.ServiceException, e:
+            rospy.logwarn("Reward service failed: %s", e)
+
+
+if __name__ == '__main__':
+    try: 
+        Reward()
+    except rospy.ROSInterruptException:
+        pass

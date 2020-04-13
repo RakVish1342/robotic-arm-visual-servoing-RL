@@ -114,7 +114,7 @@
             <ambient>1 0 0 1</ambient>
             <diffuse>1 0 0 1</diffuse>
             <specular>0.1 0.1 0.1 1</specular>
-            <emissive>0 0 0 1</emissive>
+            <emissive>0.5 0.5 0.5 1</emissive>
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -199,7 +199,7 @@
         <pose frame=''>-4.47575 1.49913 0.525845 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>0 2 0 0 -0 0</pose>
+          <pose frame=''>4 8 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
