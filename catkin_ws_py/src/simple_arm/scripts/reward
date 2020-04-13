@@ -15,20 +15,29 @@ class Reward(object):
         self.subBoxLoc = rospy.Subscriber("/simple_arm/box_location", Pose, self.cbReward)
         self.pubReward = rospy.Publisher('/simple_arm/reward', Float64, queue_size=10)
         self.imgSize = (480, 640)
-        self.center = (480/2, 640/2)
-        self.goalThresh = (15, 15)
+        self.center = (640/2, 480/2)
+        self.goalThresh = 20
+        # self.normalization = (480*480 + 640*640)**0.5
+        self.normalization = 640 # For a 1-D case
 
         rospy.spin()
 
-    def distance(pt1, pt2):
-        dist = ( (pt1[0] - pt[0])**2 + (pt1[1] - pt[1])**2 )**(0.5)
+    def distance(self, pt1, pt2):
+        # dist = ( (pt1[0] - pt2[0])**2 + (pt1[1] - pt2[1])**2 )**(0.5)
+        dist = abs(pt1[0] - pt2[0]) # For 1D case
         return dist
 
     def cbReward(self, msg):
         try:
             rospy.loginfo(">>> Reward")
             boxLoc = (msg.position.x, msg.position.y)
-            reward = - self.distance(boxLoc, self.center)
+            dist = self.distance(boxLoc, self.center)
+            print(dist)
+            if dist <= self.goalThresh:
+                reward = +1
+            else:
+                # reward = - self.distance(boxLoc, self.center) / self.normalization
+                reward = - self.distance(boxLoc, self.center) / self.normalization
             msgOut = reward
 
             # Add some boundary within which reward in +ve AKA goal state is reached

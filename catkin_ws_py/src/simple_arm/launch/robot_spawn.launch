@@ -44,4 +44,7 @@
   <!-- The box location node -->
     <node name="box_location" type="box_location" pkg="simple_arm" output="screen"/>
 
+  <!-- The reward node -->
+    <node name="reward" type="reward" pkg="simple_arm" output="screen"/>
+
 </launch>
