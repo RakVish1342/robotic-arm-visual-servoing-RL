@@ -14,6 +14,7 @@ from simple_arm.srv import *
 class BoxLocation(object):
     def __init__(self):
         rospy.init_node('box_location')
+        print(">> Box Location node initialized")
 
         self.subCamera = rospy.Subscriber("/rgb_camera/image_raw", Image, self.cbCamera)
         self.pubBoxLoc = rospy.Publisher('/simple_arm/box_location', Pose, queue_size=10)
@@ -25,7 +26,6 @@ class BoxLocation(object):
 
     def cbCamera(self, msg):
         try:
-            rospy.loginfo(">>> Box Location")
             self.image = self.cvb.imgmsg_to_cv2(msg)
             # cv2.imwrite("/home/robond/tmp.jpg", self.image)
             r = self.image[:,:,0]
@@ -46,7 +46,7 @@ class BoxLocation(object):
                 self.location = (xsum/count, ysum/count)
             else:
                 self.location = (999, 999)
-            print (self.location)
+            # print (self.location)
 
             msgOut= Pose()
             msgOut.position.x = self.location[0]

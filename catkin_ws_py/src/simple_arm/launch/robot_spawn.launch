@@ -21,8 +21,14 @@
   
   <param name="init_position_set" type="bool" value="false" />
 
-
   <!-- The init_postion node -->
     <node name="init_position" type="init_position" pkg="simple_arm" output="screen"/>
+
+  <!-- The box_location node -->
+    <node name="box_location" type="box_location" pkg="simple_arm" output="screen"/>
+
+  <!-- The reward node -->
+    <node name="reward" type="reward" pkg="simple_arm" output="screen"/>
+
 
 </launch>

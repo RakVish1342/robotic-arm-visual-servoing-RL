@@ -11,6 +11,7 @@ from simple_arm.srv import *
 class Reward(object):
     def __init__(self):
         rospy.init_node('box_location')
+        print(">> Reward node initialized")
 
         self.subBoxLoc = rospy.Subscriber("/simple_arm/box_location", Pose, self.cbReward)
         self.pubReward = rospy.Publisher('/simple_arm/reward', Float64, queue_size=10)
@@ -29,18 +30,15 @@ class Reward(object):
 
     def cbReward(self, msg):
         try:
-            rospy.loginfo(">>> Reward")
             boxLoc = (msg.position.x, msg.position.y)
             dist = self.distance(boxLoc, self.center)
-            print(dist)
+            # print(dist)
             if dist <= self.goalThresh:
                 reward = +1
             else:
                 # reward = - self.distance(boxLoc, self.center) / self.normalization
                 reward = - self.distance(boxLoc, self.center) / self.normalization
             msgOut = reward
-
-            # Add some boundary within which reward in +ve AKA goal state is reached
 
             self.pubReward.publish(msgOut)
 

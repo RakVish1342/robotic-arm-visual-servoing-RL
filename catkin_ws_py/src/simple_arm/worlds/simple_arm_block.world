@@ -199,7 +199,7 @@
         <pose frame=''>-4.47575 1.49913 0.525845 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>4 8 0 0 -0 0</pose>
+          <pose frame=''>8 0 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
