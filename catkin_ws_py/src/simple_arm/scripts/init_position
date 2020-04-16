@@ -33,7 +33,7 @@ def initPos():
     rate = rospy.Rate(10)
     # rospy.spin()
     while (not rospy.get_param("init_position_set")):
-        print(">> Robot yet to initialize...")
+        print(">> Robot orientation yet to initialize...")
         pub_j1.publish(0)
         pub_j2.publish(math.pi/2)
 
