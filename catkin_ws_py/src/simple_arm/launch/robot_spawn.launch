@@ -22,7 +22,7 @@
   <param name="init_position_set" type="bool" value="false" />
 
 
-  <!-- The my mover node -->
-    <node name="my_mover" type="my_mover" pkg="simple_arm" output="screen"/>
+  <!-- The init_postion node -->
+    <node name="init_position" type="init_position" pkg="simple_arm" output="screen"/>
 
 </launch>
