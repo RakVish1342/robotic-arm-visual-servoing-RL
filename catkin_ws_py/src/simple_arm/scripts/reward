@@ -36,7 +36,6 @@ class Reward(object):
             if dist <= self.goalThresh:
                 reward = +1
             else:
-                # reward = - self.distance(boxLoc, self.center) / self.normalization
                 reward = - self.distance(boxLoc, self.center) / self.normalization
             msgOut = reward
 
