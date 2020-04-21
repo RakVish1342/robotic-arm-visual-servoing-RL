@@ -39,7 +39,7 @@ class Reward(object):
     
     def getdata(self):
 	#time.sleep(5)
-	csvfile =  open('/root/catkin_ws/src/robotic-arm/catkin_ws_py/src/simple_arm/scripts/bilinear.csv','a+')
+	csvfile =  open('/root/catkin_ws/src/robotic-arm/catkin_ws_py/src/simple_arm/scripts/bilineardata.csv','a+')
 	field_names = ['x','dangle','x1']
 	writer = csv.DictWriter(csvfile, fieldnames=field_names)
 	writer.writeheader()
@@ -65,7 +65,10 @@ class Reward(object):
 		self.j1angle = self.j1angle + dangler
 	     self.pub_j1.publish(self.j1angle)
 	     time.sleep(2)
-   	     writer.writerow({'x':prevpos,'x1':self.boxLoc[0],'dangle':danglel})
+	     if(counter%2 == 1):
+   	     	writer.writerow({'x':prevpos,'x1':self.boxLoc[0],'dangle':danglel})
+	     elif(counter%2 == 0):
+		writer.writerow({'x':prevpos,'x1':self.boxLoc[0],'dangle':dangler})
 
 	   if(self.boxLoc[0] == 999):
 		# Change direction
@@ -80,7 +83,7 @@ class Reward(object):
 		    danglel += -angledel
 		    dangler += angledel
 		time.sleep(2)
-		writer.writerow({'x':prevpos,'x1':self.boxLoc[0],'dangle':danglel})
+		#writer.writerow({'x':prevpos,'x1':self.boxLoc[0],'dangle':danglel})
 		
 	   rate.sleep()
 	csvfile.close()
