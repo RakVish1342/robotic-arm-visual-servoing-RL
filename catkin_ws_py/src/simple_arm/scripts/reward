@@ -17,7 +17,7 @@ class Reward(object):
         self.pubReward = rospy.Publisher('/simple_arm/reward', Float64, queue_size=10)
         self.imgSize = (480, 640)
         self.center = (640/2, 480/2)
-        self.goalThresh = 20
+        self.goalThresh = 0.1
         # self.normalization = (480*480 + 640*640)**0.5
         self.normalization = 640 # For a 1-D case
 

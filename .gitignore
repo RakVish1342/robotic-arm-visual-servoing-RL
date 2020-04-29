@@ -1,0 +1,6 @@
+catkin_ws_py/devel
+catkin_ws_py/build
+
+
+catkin_ws_py/.catkin_workspace
+catkin_ws_py/effort_controllers/

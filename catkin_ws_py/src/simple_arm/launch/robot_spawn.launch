@@ -30,8 +30,6 @@
   <!-- The reward node -->
     <node name="reward" type="reward" pkg="simple_arm" output="screen"/>
 
-  <!-- Bi-linear Data Node -->
-  <node name="bilinear_data" type="bilinear_data" pkg="simple_arm" output="screen"/> 
 
 
 
