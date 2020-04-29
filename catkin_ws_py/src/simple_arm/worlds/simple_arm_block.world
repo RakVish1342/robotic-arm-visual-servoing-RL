@@ -196,7 +196,7 @@
         </link>
       </model>
       <model name='unit_box_red100kg'>
-        <pose frame=''>-4.47575 1.49913 0.525845 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
           <pose frame=''>8 0 0 0 -0 0</pose>
@@ -211,7 +211,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-	<pose frame=''>-1.00583 -0.52367 1.58104 0 0.455436 2.35566</pose>
+	<pose frame=''>15 -8 7 0 0.455436 2.35566</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
