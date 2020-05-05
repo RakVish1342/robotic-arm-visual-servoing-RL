@@ -11,22 +11,12 @@ import pickle
 import numpy as np
 
 def main():
-	parser = argparse.ArgumentParser()
-	# parser.add_argument('predictor_fname', type=str)
-	# parser.add_argument('algorithm_fname', type=str)
-	# parser.add_argument('--algorithm_init_fname', type=str, default=None)
-	# parser.add_argument('--output_dir', '-o', type=str, default=None)
-	# parser.add_argument('--visualize', '-v', type=int, default=None)
-	# parser.add_argument('--record_file', '-r', type=str, default=None)
-	# parser.add_argument('--cv2_record_file', type=str, default=None)
-	# parser.add_argument('--w_init', type=float, nargs='+', default=1.0)
-	# parser.add_argument('--lambda_init', type=float, nargs='+', default=1.0)
+
 	with open('qfunction_iter3.p', 'rb') as handle:
 		model = pickle.load(handle)
 		print("Reading old model parameters")
 		print(model)
 
-	args = parser.parse_args()
 	env = RoboticArm(); 
 	pol = ServoingPolicy()    
 

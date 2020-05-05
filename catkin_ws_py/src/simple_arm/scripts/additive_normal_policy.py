@@ -1,8 +1,5 @@
 import scipy.stats
 import numpy as np
-# from visual_dynamics.policies import Policy
-# from visual_dynamics.spaces import AxisAngleSpace, TranslationAxisAngleSpace
-
 
 class AdditiveNormalPolicy():
     def __init__(self, pol, action_space, state_space, act_std=None, reset_std=None):

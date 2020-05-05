@@ -30,41 +30,6 @@ def do_rollouts(env, pol, num_trajs, num_steps, target_distance=0,
         reset_states = [None] * num_trajs
     else:
         num_trajs = min(num_trajs, len(reset_states))
-    # if output_dir:
-    #     container = ImageDataContainer(output_dir, 'x')
-    #     container.reserve(list(env.observation_space.spaces.keys()) + ['state'], (num_trajs, num_steps + 1))
-    #     container.reserve(['action', 'reward'], (num_trajs, num_steps))
-    #     container.add_info(environment_config=env.get_config())
-    #     container.add_info(env_spec_config=EnvSpec(env.action_space, env.observation_space).get_config())
-    #     container.add_info(policy_config=pol.get_config())
-    # else:
-    #     container = None
-
-    # if record_file:
-    #     if image_visualizer is None:
-    #         raise ValueError('image_visualizer cannot be None for recording')
-    #     FFMpegWriter = manimation.writers['ffmpeg']
-    #     writer = FFMpegWriter(fps=1.0 / env.dt)
-    #     fig = plt.gcf()
-    #     writer.setup(fig, record_file, fig.dpi)
-    # if cv2_record_file:
-    #     import cv2
-    #     fourcc = cv2.VideoWriter_fourcc(*'X264')
-    #     image_shape = env.observation_space.spaces['image'].shape[:2]
-    #     if image_transformer:
-    #         image_shape = image_transformer.preprocess_shape(image_shape)
-    #     video_writer = cv2.VideoWriter(cv2_record_file, fourcc, 1.0 / env.dt, image_shape[:2][::-1])
-
-    # def preprocess_image(obs):
-    #     if image_transformer:
-    #         if isinstance(obs, dict):
-    #             obs = dict(obs)
-    #             for name, maybe_image in obs.items():
-    #                 if name.endswith('image'):
-    #                     obs[name] = image_transformer.preprocess(maybe_image)
-    #         else:
-    #             obs = image_transformer.preprocess(obs)
-    #     return obs
 
     start_time = time.time()
     if verbose:
@@ -123,32 +88,6 @@ def do_rollouts(env, pol, num_trajs, num_steps, target_distance=0,
                         # observations_.append(preprocess_image(obs))
                         observations_.append(obs)
                         states_.append(state)
-                # if container:
-                #     container.add_datum(traj_iter, step_iter, action=action, reward=reward)
-                #     if step_iter == (num_steps - 1) or episode_done:
-                #         container.add_datum(traj_iter, step_iter + 1, state=state, **obs)
-                # if step_iter == (num_steps - 1) or episode_done:
-                #     if cv2_record_file:
-                #         vis_image = obs['image'].copy()
-                #         vis_image = cv2.cvtColor(vis_image, cv2.COLOR_RGB2BGR)
-                #         vis_image = image_transformer.preprocess(vis_image)
-                #         video_writer.write(vis_image)
-
-                # if image_visualizer:
-                #     env.render()
-                #     image = prev_obs['image']
-                #     next_image = obs['image']
-                #     target_image = obs['target_image']
-                #     try:
-                #         import tkinter
-                #     except ImportError:
-                #         import Tkinter as tkinter
-                #     try:
-                #         image_visualizer.update(image, next_image, target_image, action)
-                #         if record_file:
-                #             writer.grab_frame()
-                #     except tkinter.TclError:
-                #         done = True
 
                 if done or episode_done:
                     break

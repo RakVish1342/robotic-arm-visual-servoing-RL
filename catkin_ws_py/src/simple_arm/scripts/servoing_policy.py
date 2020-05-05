@@ -11,12 +11,6 @@ import pickle
 # import theano.tensor as T
 # import yaml
 
-# from visual_dynamics.policies import Policy
-# from visual_dynamics.spaces import AxisAngleSpace
-# from visual_dynamics.spaces import TranslationAxisAngleSpace
-# from visual_dynamics.utils import iter_util
-# from visual_dynamics.utils.config import Python2to3Loader
-# from visual_dynamics.utils.config import from_config, from_yaml
 
 class ServoingPolicy():
 	def __init__(self, alpha=1.0, lambda_=0.0, w=1.0, use_constrained_opt=False, unweighted_features=False, algorithm_or_fname=None):
@@ -384,44 +378,3 @@ class ServoingPolicy():
 		# else:
 		#     self.action_space.clip(action, out=action)
 		return action
-
-	def A_b_c_split(self, observations, preprocessed=False):
-		"""
-		Corresponds to the linearized objective
-
-		The following should be true
-		actions_pi = self.pi(states)
-		actions_act = [self.act(state) for state in states]
-		assert np.allclose(actions_pi, actions_act)
-		"""
-		# if self.w.shape != (len(self.repeats),):
-		# 	raise NotImplementedError
-		# batch_size = len(observations)
-		# if batch_size <= self.max_batch_size:
-		# 	if preprocessed:
-		# 		batch_image = np.array([obs['image'] for obs in observations])
-		# 		batch_target_image = np.array([obs['target_image'] for obs in observations])
-		# 	else:
-		# 		batch_image, = self.predictor.preprocess([[obs['image'] for obs in observations]], batch_size)
-		# 		batch_target_image, = self.predictor.preprocess([[obs['target_image'] for obs in observations]], batch_size)
-		# 	action_lin = np.zeros(self.action_space.shape)
-		# 	u_lin = self.action_transformer.preprocess(action_lin)
-		# 	batch_u_lin = np.array([u_lin] * batch_size)
-
-		# 	# if self.A_b_c_split_fn is None:
-		# 	#     self.A_b_c_split_fn = self._compile_A_b_c_split_fn()
-		# 	A_split, b_split, c_split = self.A_b_c_split_fn(batch_image, batch_target_image, batch_u_lin, self.alpha)
-		# 	return A_split, b_split, c_split
-		# else:
-		#     A_split, b_split, c_split = None, None, None
-		#     for i in range(0, batch_size, self.max_batch_size):
-		#         s = slice(i, min(i + self.max_batch_size, batch_size))
-		#         minibatch_A_split, minibatch_b_split, minibatch_c_split = self.A_b_c_split(observations[s], preprocessed=preprocessed)
-		#         if A_split is None:
-		#             A_split = np.empty((minibatch_A_split.shape[0], batch_size) + minibatch_A_split.shape[2:])
-		#             b_split = np.empty((minibatch_b_split.shape[0], batch_size) + minibatch_b_split.shape[2:])
-		#             c_split = np.empty((minibatch_c_split.shape[0], batch_size) + minibatch_c_split.shape[2:])
-		#         A_split[:, s] = minibatch_A_split
-		#         b_split[:, s] = minibatch_b_split
-		#         c_split[:, s] = minibatch_c_split
-			# return A_split, b_split, c_split

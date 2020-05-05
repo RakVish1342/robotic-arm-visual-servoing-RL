@@ -18,18 +18,13 @@ class RoboticArm():
 		self.box_loc = None
 		self.reward = None
 		self.dt = dt or 0.5
-		# rospy.init_node('init_position')
-		# package = 'simple_arm'
-		# executable = 'init_position'
-		# node = roslaunch.core.Node(package, executable)
-		# self.u = rospy.Subscriber('/simple_arm/joint_states', 
-		#                                 JointState, cbSetInitParam)
-		# rate = rospy.Rate(10)
+
 		rospy.init_node('init_position', anonymous=True)
 		self.rate = rospy.Rate(1.0 / self.dt)
 		uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
 		roslaunch.configure_logging(uuid)
-		self.launch = roslaunch.parent.ROSLaunchParent(uuid, ["/home/ravipipaliya/project/robotic-arm/catkin_ws_py/src/simple_arm/launch/robot_spawn.launch"])
+		# self.launch = roslaunch.parent.ROSLaunchParent(uuid, ["/home/ravipipaliya/project/robotic-arm/catkin_ws_py/src/simple_arm/launch/robot_spawn.launch"])
+		self.launch = roslaunch.parent.ROSLaunchParent(uuid, ["../launch/robot_spawn.launch"])
 		self.launch.start()
 		self.pub_q1 = rospy.Publisher('/simple_arm/joint_1_position_controller/command',Float64, queue_size=10)
 		self.pub_q2 = rospy.Publisher('/simple_arm/joint_2_position_controller/command',Float64, queue_size=10)
@@ -100,7 +95,6 @@ class RoboticArm():
 		# else:
 		# 	print("Action skipped due to low change")
 		# 	print(state)
-		# raise NotImplementedError
 
 	def render(self):
 		pass

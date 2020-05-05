@@ -13,16 +13,8 @@ from random import choice
 
 def main():
 	parser = argparse.ArgumentParser()
-	# parser.add_argument('predictor_fname', type=str)
-	# parser.add_argument('algorithm_fname', type=str)
-	# parser.add_argument('--algorithm_init_fname', type=str, default=None)
 	parser.add_argument('--output_dir', '-o', type=str, default=None)
 	parser.add_argument('--sampling_iters', '-i', type=int, default=20)
-	# parser.add_argument('--visualize', '-v', type=int, default=None)
-	# parser.add_argument('--record_file', '-r', type=str, default=None)
-	# parser.add_argument('--cv2_record_file', type=str, default=None)
-	# parser.add_argument('--w_init', type=float, nargs='+', default=1.0)
-	# parser.add_argument('--lambda_init', type=float, nargs='+', default=1.0)
 
 	args = parser.parse_args()
 	env = RoboticArm(); 
@@ -63,14 +55,10 @@ def main():
 				break	
 		iter_ += 1
 
-	# print(actions)
-	# print(observations)
-	# print(prev_observations)
-	# print(rewards)
-	# print(states)
+
 	itemlist = {"states" : states, "observations" : observations, "prev_observations" : prev_observations, "actions" : actions, "rewards" : rewards}
 	print("Saving data ... in " + os.getcwd())
-	with open('outfile_reset_upd.p', 'wb') as fp:
+	with open('data_file.p', 'wb') as fp:
 		pickle.dump(itemlist, fp)
 
 if __name__ == '__main__':

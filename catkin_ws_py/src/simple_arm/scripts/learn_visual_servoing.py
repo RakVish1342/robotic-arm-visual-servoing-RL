@@ -21,7 +21,7 @@ def main():
 	# parser.add_argument('--w_init', type=float, nargs='+', default=1.0)
 	# parser.add_argument('--lambda_init', type=float, nargs='+', default=1.0)
 	try:
-		with open('qfunction_iter2.p', 'rb') as handle:
+		with open('qfunction_iter3.p', 'rb') as handle:
 			model = pickle.load(handle)
 			print("Reading old model parameters")
 			print(model)
@@ -30,7 +30,7 @@ def main():
 		model = None
 		print("No previous model found. Training from scratch")
 
-	args = parser.parse_args()
+	# args = parser.parse_args()
 	env = RoboticArm(); 
 	pol = ServoingPolicy()
 
@@ -44,22 +44,10 @@ def main():
 	print("Saving Theta")
 	params = {"theta" : pol.theta}
 	print(params)
-	with open('qfunction_iter3.p', 'wb') as fp:
+	with open('qfunction_iter4.p', 'wb') as fp:
 		pickle.dump(params, fp)
 
 	print('Hello World')
-	# time.sleep(5)
-	# print(env.get_state())
-	# env.set_state([0.5,pi/2 + 0.5])
-	# time.sleep(5)
-	# print(env.get_state())
-	# print("Resetting")
-	# env.reset()
-	# # time.sleep(1)
-	# print(env.get_state())
-	# print("Closing")
-	# env.close()
-	# print("Its Closed")
 
 if __name__ == '__main__':
 	main()

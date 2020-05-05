@@ -7,6 +7,7 @@ from collections import OrderedDict
 # theano.config.optimizer='fast_compile'
 # theano.config.exception_verbosity='high'
 # theano.config.compute_test_value = 'warn'
+
 def main():  
 
 	print(os.getcwd())
@@ -14,7 +15,7 @@ def main():
 		dump = pickle.load(handle)
 
 	try:
-		with open('model_iter1.p', 'rb') as handle:
+		with open('model_iter2.p', 'rb') as handle:
 			model = pickle.load(handle)
 			print("Reading old model parameters")
 			print(model)
@@ -136,7 +137,7 @@ def main():
 	# Save model
 	print("Saving model parameters ... in " + os.getcwd())
 	print(model_params)
-	with open('model_iter2.p', 'wb') as fp:
+	with open('model_iter3.p', 'wb') as fp:
 		pickle.dump(model_params, fp)
 
 if __name__ == '__main__':
