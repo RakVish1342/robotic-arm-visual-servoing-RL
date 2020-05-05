@@ -30,7 +30,7 @@ Demo Video Links:
 
 1. Data Collection: 
 
-```https://www.youtube.com/watch?v=f0ve1BEQK2k&feature=emb_title```
+```https://www.youtube.com/watch?v=fxEXsMEiook&feature=emb_title```
 
 2. Results with Zero Iterations:
 
@@ -38,7 +38,7 @@ Demo Video Links:
 
 3. Results with Fitted Q-Iterations:
 
-```https://www.youtube.com/watch?v=f0ve1BEQK2k&feature=emb_title```
+```https://www.youtube.com/watch?v=u14srrIapOg&feature=emb_title```
 
 
 Misc. Notes:
