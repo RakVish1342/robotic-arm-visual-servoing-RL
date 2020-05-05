@@ -33,23 +33,23 @@ def main():
 	if model is not None:
 		pol.theta = model.get("theta")
 
-
 	try:
 		while True:
 			y = env.box_loc
-			print("Current box_loc:\t"+str(y[0])+'\t'+str(y[1]))
-			
-			if y[0] < 640 and y[1] < 480:
-				A_p = pol.pi([y], preprocessed=True)
-				A_p = np.clip(A_p,a_min = -0.4,a_max = 0.4)
-			else: 
-				A_p = np.random.randint(0,200,[2,])*0.01-1
-				# time.sleep(0.3)
-			
-			print(A_p)
-			# print("Action:\t"+str(A_p[0])+'\t'+str(A_p[1]))
-			_,_,_,_ = env.step(A_p[0])
-			time.sleep(0.1)
+			if y is not None:
+				print("Current box_loc:\t"+str(y[0])+'\t'+str(y[1]))
+				
+				if y[0] < 640 and y[1] < 480:
+					A_p = pol.pi([y], preprocessed=True)
+					A_p = np.clip(A_p,a_min = -0.4,a_max = 0.4)
+				else: 
+					A_p = np.random.randint(0,200,[2,])*0.01-1
+					# time.sleep(0.3)
+				
+				print(A_p)
+				# print("Action:\t"+str(A_p[0])+'\t'+str(A_p[1]))
+				_,_,_,_ = env.step(A_p[0])
+				time.sleep(0.1)
 	except KeyboardInterrupt:
 		print('interrupted!')
 

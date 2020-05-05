@@ -79,6 +79,7 @@ def main():
 	learning_rate = theano.tensor.scalar(name='learning_rate')
 	learning_rate.tag.test_value = 0.1
 
+	# ADAM updates
 	t = t_prev + 1
 	a_t = learning_rate*T.sqrt(one-beta2**t)/(one-beta1**t)
 	# i = 1

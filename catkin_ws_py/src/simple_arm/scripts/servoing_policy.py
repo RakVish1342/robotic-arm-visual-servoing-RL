@@ -18,7 +18,6 @@ import pickle
 # from visual_dynamics.utils.config import Python2to3Loader
 # from visual_dynamics.utils.config import from_config, from_yaml
 
-
 class ServoingPolicy():
 	def __init__(self, alpha=1.0, lambda_=0.0, w=1.0, use_constrained_opt=False, unweighted_features=False, algorithm_or_fname=None):
 		# if isinstance(predictor, str):
@@ -76,6 +75,15 @@ class ServoingPolicy():
 		with open('model_iter2.p', 'rb') as handle:
 			model = pickle.load(handle)
 			print("Reading old model parameters")
+
+		with open('qfunction_iter3.p', 'rb') as handle:
+			wl = pickle.load(handle)
+			print("Reading old model parameters")
+			print(wl)
+			self._theta = wl.get("theta")
+			self._w = self._theta[0]
+			self._lambda_ = self._theta[1:3]
+			self.lambda_ = self._theta[1:3]
 
 		# Load model
 		W0 = theano.shared(model.get("W0").astype(theano.config.floatX),"W0")
