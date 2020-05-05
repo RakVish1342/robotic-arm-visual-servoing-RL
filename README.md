@@ -1,6 +1,8 @@
-##EEE 587: Optimal Controls - Robotic Arm
+EEE 587: Optimal Controls - Robotic Arm
+---
 
-###Required Python Packages
+Required Python Packages
+---
 
 ```
 scipy
@@ -12,7 +14,8 @@ netifaces
 ```
 
 
-###Testing File
+Testing File
+---
 
 1. git clone
 2. catkin_make
@@ -22,7 +25,8 @@ netifaces
 6. python testing_visual_servoing.py
 
 
-###Demo Video Links:
+Demo Video Links:
+---
 
 1. Data Collection: 
 
@@ -37,7 +41,8 @@ netifaces
 ```https://www.youtube.com/watch?v=f0ve1BEQK2k&feature=emb_title```
 
 
-###Misc. Notes:
+Misc. Notes:
+---
 
 To launch Robot Arm Nodes Alone (without Q Learning Node):
 
