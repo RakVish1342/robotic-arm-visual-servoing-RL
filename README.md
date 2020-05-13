@@ -1,6 +1,24 @@
 EEE 587: Optimal Controls - Robotic Arm
 ---
 
+Data Collection for Bilinear Model
+---
+
+<img src="./gifs/1__Generating training data.gif" height="400" width="400" />
+
+
+Performance before Fitted Q Iteration (using initialized weights)
+---
+
+<img src="./gifs/2__Testing Visual servoing.gif" height="400" width="400" />
+
+
+Performance after Fitted Q Iteration Weights
+---
+
+<img src="./gifs/3__Final video with weights.gif" height="400" width="400" />
+
+
 Required Python Packages
 ---
 
