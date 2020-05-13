@@ -8,7 +8,7 @@ Data Collection for Bilinear Model
 * If box goes out of camera frame, a arm is reinitialized at a random location from which bix is visible again.
 * Data is used to fix weights for bilinear model, which helps predict the next box location given the current box location and control input. 
 
-<img src="./gifs/1__Generating training data.gif" height="400" width="400" />
+<img src="./gifs/1__Generating training data_crop.gif" height="300" width="542" />
 
 
 Performance before Fitted Q Iteration (using initialized weights)
@@ -18,7 +18,7 @@ Performance before Fitted Q Iteration (using initialized weights)
 * Performance of arm visualized with these initialized weights.
 * Arm seems to track box in most cases but lots of oscillations seen.
 
-<img src="./gifs/2__Testing Visual servoing.gif" height="400" width="400" />
+<img src="./gifs/2__Testing Visual servoing_crop.gif" height="300" width="542" />
 
 * State-action space (in camera frame): 
 
@@ -30,7 +30,7 @@ Performance after Fitted Q Iteration Weights
 * Fitted Q iteration has been performed for ```iterations = 10, batch_samples = 2000, gamma = 0.9, exploration_policy = ~N(current_policy, 0.2)```
 * No oscillations seen. Arm tracks box smoothly.
 
-<img src="./gifs/3__Final video with weights.gif" height="400" width="400" />
+<img src="./gifs/3__Final video with weights_crop.gif" height="300" width="542" />
 
 * State-action space (in camera frame): 
 
