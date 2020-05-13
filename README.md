@@ -22,7 +22,7 @@ Performance before Fitted Q Iteration (using initialized weights)
 
 * State-action space (in camera frame): 
 
-<img src="./images/state_action__before_fqi.png" height="200" width="100" />
+<img src="./images/state_action__before_fqi.png" height="200" width="200" />
 
 Performance after Fitted Q Iteration Weights
 ---
@@ -34,7 +34,7 @@ Performance after Fitted Q Iteration Weights
 
 * State-action space (in camera frame): 
 
-<img src="./images/state_action__after_fqi.png" height="200" width="100" />
+<img src="./images/state_action__after_fqi.png" height="200" width="200" />
 
 
 
