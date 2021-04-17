@@ -94,3 +94,11 @@ Python scripts located at:
 catkin_ws_py/src/simple_arm/scripts
 ```
 
+
+
+References:
+---
+* Richard S. Sutton, Andrew Barto, "Reinforcement Learning: An Introduction"
+* Alex Lee, et. al., Learning Visual Servoing with Deep Features and Fitted Q-Iteration ([paper](https://arxiv.org/abs/1703.11000), [code/notes/slides](https://rll.berkeley.edu/visual_servoing/))
+* Udacity Simple Arm URDF ([link](https://github.com/udacity/simple_arm))
+
